@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Hiring | AI-Powered Candidate Filtering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+        }
+        .process-step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .pricing-card.popular {
+            border-top: 4px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-user-tie text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Selectra</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#how-it-works" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">How It Works</a>
+                    <a href="#pricing" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Pricing</a>
+                    <a href="#why-it-works" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Why It Works</a>
+                    <a href="#about" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="#contact" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Contact</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">Smart hiring, powered by AI. <span class="text-blue-500">Trusted by humans.</span></h1>
+                    <p class="text-xl text-gray-600 mb-8">Save time and hire smarter with our hybrid approach that combines AI efficiency with human expertise.</p>
+                    <!-- Centered AI Chat Input -->
+                    <div class="w-full max-w-2xl mx-auto mb-8 space-y-4">
+                        <div class="flex items-center bg-white rounded-full shadow-xl px-8 py-5 transition-all duration-300 hover:shadow-2xl border-2 border-blue-100">
+                            <input
+                                type="text"
+                                id="hero-chat-input"
+                                placeholder="Ask our AI assistant about hiring solutions..."
+                                class="w-full border-0 focus:ring-0 focus:outline-none text-gray-700 placeholder-gray-400 text-lg"
+                            >
+                            <button
+                                id="hero-send-chat"
+                                class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full font-semibold transition-colors duration-200 flex items-center space-x-2"
+                            >
+                                <i class="fas fa-search text-lg"></i>
+                                <span class="text-lg"></span>
+                            </button>
+                        </div>
+                        <p class="text-center text-sm text-blue-100 italic">
+                            Examples: "How does AI screening work?" \| "Show me pricing options"
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-150 ease-in-out">Start Your Search</a>
+                        <a href="#" class="bg-white hover:bg-gray-100 text-blue-500 px-6 py-3 rounded-md text-lg font-medium border border-blue-500 transition duration-150 ease-in-out">Request a Candidate</a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Team working together" class="rounded-xl shadow-xl w-full h-auto">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                        <div class="flex items-center">
+                            <div class="bg-blue-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-plus-circle text-blue-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium">Join our growing network of hiring partners</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-3xl font-bold text-blue-500 mb-2">10K+</p>
+                    <p class="text-gray-600">Candidates in our network</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-blue-500 mb-2">85%</p>
+                    <p class="text-gray-600">Time saved vs traditional hiring</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-blue-500 mb-2">4.9/5</p>
+                    <p class="text-gray-600">Pilot customer satisfaction</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-blue-500 mb-2">30%</p>
+                    <p class="text-gray-600">Better retention expected</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our hybrid approach combines the best of AI and human expertise to deliver exceptional hiring results.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">1</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Craft the Perfect Job Post</h3>
+                    <p class="text-gray-600">Use our AI model tailored for HR to generate an attractive, inclusive, and role-specific job description.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">2</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Automated Talent Sourcing</h3>
+                    <p class="text-gray-600">SelectraAI scrapes and analyzes thousands of profiles across platforms to build a high-quality candidate pool.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">3</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Shortlisting</h3>
+                    <p class="text-gray-600">Our AI engine filters candidates based on skills, experience, and fit. Optionally, our HR experts refine the list.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">4</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Candidate Outreach</h3>
+                    <p class="text-gray-600">Automatically initiate contact with top candidates using personalized AI-generated messages. Human review optional.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">5</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Engagement & Interest Validation</h3>
+                    <p class="text-gray-600">Receive a shortlist of candidates who are not only qualified but also interested and available for interviews.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-number bg-blue-100 text-blue-500">6</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Optional First-Round Interviewing</h3>
+                    <p class="text-gray-600">Let our experienced HR team conduct initial interviews and deliver a final shortlist of top-tier candidates.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out">
+                    See It In Action
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tiers -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Choose the level of service that matches your hiring needs and budget.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="pricing-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">AI Only</h3>
+                        <p class="text-gray-600 mb-6">Fast, affordable candidate filtering</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">$49</span>
+                            <span class="text-gray-600">/search</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>AI-powered candidate filtering</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Up to 50 candidate matches</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Basic skills assessment</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="fas fa-times mr-2"></i>
+                                <span>No human review</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition duration-150 ease-in-out">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-blue-500 popular relative">
+                    <div class="px-6 py-8">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">AI + Human</h3>
+                        <p class="text-gray-600 mb-6">Balanced, smart approach</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">$299</span>
+                            <span class="text-gray-600">/search</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>AI-powered candidate filtering</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Up to 20 curated candidates</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Human expert review</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Cultural fit assessment</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+                    <div class="px-6 py-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Full Service</h3>
+                        <p class="text-gray-600 mb-6">Personalized search with recruiter</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-900">$999</span>
+                            <span class="text-gray-600">/search</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Dedicated recruiter</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Custom candidate sourcing</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Interview scheduling</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-green-500 mr-2"></i>
+                                <span>Ongoing hiring support</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition duration-150 ease-in-out">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600">Need custom pricing for high-volume hiring? <a href="#contact" class="text-blue-500 hover:text-blue-600 font-medium">Contact us</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Works -->
+    <section id="why-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Our Hybrid Approach Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">The best of both worlds: AI efficiency meets human intuition.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-bolt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">AI Speed & Coverage</h3>
+                                <p class="text-gray-600">Our algorithms can scan thousands of profiles in minutes, identifying candidates who match your technical requirements with precision.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-brain text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Human Nuance & Judgment</h3>
+                                <p class="text-gray-600">Our experts evaluate candidates for soft skills, cultural fit, and potential that AI might miss, ensuring well-rounded recommendations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-balance-scale text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">The Perfect Balance</h3>
+                                <p class="text-gray-600">By combining both approaches, we deliver candidates who not only have the right skills but also the right fit for your team's dynamics.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-chart-line text-green-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Expected Results</h3>
+                            <p class="text-gray-600">Based on our pilot program, companies can expect:</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-500 font-bold">3x</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Faster time-to-hire</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-500 font-bold">40%</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Better interview-to-offer ratio</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <span class="text-blue-500 font-bold">25%</span>
+                            </div>
+                            <div>
+                                <p class="font-medium">Lower turnover in first year</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                    <p class="text-xl text-gray-600 mb-6">To make hiring smart, affordable, and reliable by combining the best of technology and human expertise.</p>
+                    <p class="text-gray-600 mb-8">Founded by HR professionals and AI engineers, we recognized that neither pure technology nor pure human effort alone could solve modern hiring challenges. Our hybrid approach leverages AI to handle the heavy lifting of candidate screening while preserving the irreplaceable value of human judgment for final selections.</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Founder" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-medium">Sarah Johnson, CEO</p>
+                            <p class="text-gray-600 text-sm">"We're redefining hiring for the modern age."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Our Edge</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-cogs text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">AI Does the Heavy Lifting</h4>
+                                <p class="text-gray-600">Our proprietary algorithms analyze resumes, profiles, and online presence to identify technical matches with 95% accuracy.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-user-tie text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Humans Add Precision</h4>
+                                <p class="text-gray-600">Our HR experts review top candidates for soft skills, communication ability, and cultural alignment.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-hand-holding-usd text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Affordable for All</h4>
+                                <p class="text-gray-600">By optimizing our process, we deliver enterprise-grade hiring solutions at prices startups can afford.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Early Feedback</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">What our pilot customers are saying about our approach.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The AI-human combo shows tremendous promise. We're seeing great candidate matches already in our pilot."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-medium">Michael Chen</p>
+                            <p class="text-gray-600 text-sm">CTO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"The human review made all the difference in our test run. We got candidates who fit our culture perfectly."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-medium">Jessica Williams</p>
+                            <p class="text-gray-600 text-sm">HR Director, GrowthCorp</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">"For the price, the quality of candidates is excellent. We're excited to be early adopters of this approach."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <p class="font-medium">David Rodriguez</p>
+                            <p class="text-gray-600 text-sm">CEO, SmallBiz Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                    <p class="text-xl text-gray-600 mb-6">Have questions or ready to get started? We're here to help.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Email Us</h4>
+                                <p class="text-gray-600">hello@smarthire.ai</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Call Us</h4>
+                                <p class="text-gray-600">(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Visit Us</h4>
+                                <p class="text-gray-600">123 Tech Street, San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                            <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="demo-request" name="demo-request" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="demo-request" class="ml-2 block text-sm text-gray-700">Request a demo</label>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full flex justify-center items-center px-6 py-3 border border-transparent text-lg font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-blue-500 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Hiring Process?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Be among the first to experience our innovative AI-human hybrid approach to hiring.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#" class="bg-white hover:bg-gray-100 text-blue-500 px-6 py-3 rounded-md text-lg font-medium transition duration-150 ease-in-out">Start Your Search</a>
+                <a href="#contact" class="bg-transparent hover:bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium border border-white transition duration-150 ease-in-out">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-user-tie text-blue-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">Selectra</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Smart hiring, powered by AI. Trusted by humans.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white">How It Works</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Selectra. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Security</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Accessibility</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Status</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+
+    <script>
+        // Placeholder for future chat functionality integrated into the hero section
+        
+        // Initialize chatbot variables
+        let chatbotActive = false;
+        const chatbot = document.createElement('div'); // Placeholder for future chatbot element
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close chatbot if open
+                    if (chatbotActive && targetId !== '#contact') {
+                        chatbotActive = false;
+                        chatbot.classList.remove('active');
+                        setTimeout(() => {
+                            chatbot.classList.add('hidden');
+                        }, 300);
+                    }
+                }
+            });
+        });
+    </script>
